@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center">
+      <h2 class="mb-4">CAR MODELS AVAILABLE</h2>
+    </div>
+    <div class="col" style="margin: 20px" *ngFor="let car of carArray">
+      <div class="card">
+        <img
+          src="assets/images/defaultcar.jpg"
+          class="card-img-top"
+          style="width: 300px; margin-top: 40px; margin-left: 40px"
+          alt="Car Image"
+        />
+        <br />
+        <div class="row">
+          <div class="col xs-12">
+            <h4 style="margin-left: 10px">Brand: {{ car.brand }}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col xs-12">
+            <h4 style="margin-left: 10px">Model: {{ car.model }}</h4>
+          </div>
+        </div>
+
+        <div class="pt-1 mb-4" style="margin-top: 10px">
+          <button
+            style="margin-left: 10px"
+            class="btn btn-dark"
+            (click)="onSelectedCar(car)"
+          >
+            Add Car
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

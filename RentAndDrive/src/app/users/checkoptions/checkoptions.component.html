@@ -1,0 +1,155 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center">
+      <h4 class="mb-4">CAR MODELS AVAILABLE</h4>
+    </div>
+    <div class="col md-6 xs-12">
+      <div class="row" style="margin: 20px" *ngFor="let car of carArray">
+        <div class="card">
+          <img
+            src="assets/images/defaultcar.jpg"
+            class="card-img-top"
+            style="width: 300px; margin-top: 40px; margin-left: 40px"
+            alt="Car Image"
+          />
+          <br />
+          <div class="row">
+            <div class="col xs-12">
+              <h4>Brand: {{ car.brand }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col xs-12">
+              <h4>Model: {{ car.model }}</h4>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col xs-12">
+              <button class="btn btn-dark" (click)="onClicked(car)">
+                View Options
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col md-6" *ngIf="isClicked">
+      <div class="col xs-12">
+        <div *ngFor="let cardet of carDetailsArray" style="margin-top: 20px">
+          <div class="card">
+            <div class="row">
+              <img
+                src="{{ cardet.image }}"
+                class="card-img-top"
+                style="width: 300px; margin-top: 40px; margin-left: 40px"
+                alt="Car Image"
+              />
+            </div>
+            <br />
+            <div class="row">
+              <div class="col xs-12">
+                <h2>Cost per day: ₹{{ cardet.cost }}</h2>
+              </div>
+
+              <div class="col xs-12">
+                <h2>Mileage: {{ cardet.mileage }}</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col xs-12">
+                <h2>Area Code: {{ cardet.area_code }}</h2>
+              </div>
+
+              <div class="col xs-12">
+                <h2>Capacity: {{ cardet.capacity }} seater</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col xs-12">
+                <h2 *ngIf="cardet.availability" style="color: green">
+                  Available
+                </h2>
+                <h2 *ngIf="!cardet.availability" style="color: red">
+                  Not Available
+                </h2>
+              </div>
+
+              <div class="col xs-12">
+                <button
+                  *ngIf="!isDateOpen"
+                  style="margin-top: 20px"
+                  class="btn btn-dark"
+                  [disabled]="!cardet.availability"
+                  (click)="onSendEnquiry(cardet)"
+                >
+                  Send Enquiry!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-body p-4 p-lg-5 text-black"
+          style="background-color: rgb(255, 247, 247); border-radius: 3px"
+          *ngIf="isDateOpen"
+        >
+          <div class="row" style="align-items: center">
+            <h2 class="mb-4">Select Booking Dates</h2>
+          </div>
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <label class="form-label">Select start-date</label>
+                <input
+                  type="date"
+                  id="startDate"
+                  class="form-control"
+                  ngModel
+                  #startdate="ngModel"
+                  name="startDate"
+                  required
+                />
+                <!-- <span class="help-block" *ngif="!brand.valid && brand.touched">
+                  Please enter valid Brand</span
+                > -->
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <label class="form-label">Select end-date</label>
+                <input
+                  type="date"
+                  name="model"
+                  ngModel
+                  #enddate="ngModel"
+                  class="form-control"
+                  name="endDate"
+                  required
+                />
+                <!-- <span class="help-block" *ngif="!model.valid && model.touched">
+                  Please enter valid Model
+                </span> -->
+              </div>
+
+              <button
+                style="margin-top: 20px"
+                class="btn btn-dark"
+                type="submit"
+                [disabled]="!f.valid"
+              >
+                Submit
+              </button>
+              <button
+                style="margin-top: 10px"
+                class="btn btn-danger"
+                (click)="onCancel()"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

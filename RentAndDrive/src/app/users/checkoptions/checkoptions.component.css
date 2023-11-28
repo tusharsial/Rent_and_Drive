@@ -1,0 +1,64 @@
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    padding: 10px;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+.card-text {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+h2 {
+    color: #343a40;
+    font-size: medium;
+}
+
+.brand-icon {
+    color: #007bff;
+}
+/* your-component.component.css */
+
+/* Custom styling for the date range input container */
+.mat-date-range-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Styling for the start and end date input fields */
+  .mat-start-date,
+  .mat-end-date {
+    width: 150px; /* Adjust the width as needed */
+    margin: 0 10px; /* Adjust the margin as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  /* Styling for the datepicker toggle button */
+  .mat-datepicker-toggle {
+    background-color: #3498db; /* Primary color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  

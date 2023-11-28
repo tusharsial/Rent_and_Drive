@@ -1,0 +1,55 @@
+<section style="background-color: #9a616d; height: 550px">
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem; padding: 30px">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img
+                src="assets/images/homeimage.jpeg"
+                alt="login form"
+                class="w-100 vh-50 mt-5 pt-5"
+                style="width: 100px"
+              />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="row card-body p-12 p-lg-12 text-black">
+                <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
+                <span class="h1 fw-bold mb-0">Choose your option</span>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <button
+                    (click)="onClickFirst()"
+                    class="btn btn-close-white custom-option"
+                    style="background-color: rgb(177, 228, 228)"
+                  >
+                    <i class="fas fa-car car-icon">
+                      Do you want to rent a car?</i
+                    >
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <button
+                    (click)="onClickSecond()"
+                    class="btn btn-close-white custom-option-text"
+                    style="background-color: rgb(177, 228, 228)"
+                  >
+                    <i class="fas fa-car car-icon">
+                      Do you want to add your car?</i
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <a routerLink="/users">Rent Car</a>
+<br />
+<a routerLink="/addcardetails">Lend Car</a> -->

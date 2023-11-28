@@ -1,0 +1,21 @@
+@import url("~@angular/material/prebuilt-themes/indigo-pink.css");
+/* Style for the options */
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.car-icon {
+    font-size: 24px;
+    margin-right: 5px;
+}
+.custom-option-text {
+    font-size: 1em;
+    color: #007BFF; /* Blue color */
+ 
+}
+.custom-option {
+    font-size: 1em;
+    color: green; /* Blue color */
+    
+}

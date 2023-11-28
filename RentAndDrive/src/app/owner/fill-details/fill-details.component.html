@@ -1,0 +1,167 @@
+<section style="background-color: #9a616d">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col col-xl-8" style="margin-top: 100px">
+      <div
+        class="card"
+        style="border-radius: 1rem; padding: 50px; align-items: center"
+      >
+        <div class="row g-0">
+          <div class="card-body text-black align-items-center">
+            <div class="d-flex align-items-center mb-3 pb-1">
+              <span class="h1 fw-bold mb-0">Add Your Car</span>
+            </div>
+            <br />
+            <div class="row g-0">
+              <div class="col md-6 xs-12">
+                <label class="form-label">Car Brand</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="brand"
+                  class="form-control"
+                  [ngModel]="selected_car.brand"
+                  name="brand"
+                  required
+                  readonly
+                />
+              </div>
+              <div class="col md-6 xs-12">
+                <label class="form-label">Car Model</label>
+                <input
+                  type="text"
+                  name="model"
+                  [ngModel]="selected_car.model"
+                  class="form-control"
+                  ngModel
+                  name="model"
+                  required
+                  readonly
+                />
+              </div>
+              <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="row">
+                  <div class="col md-6 xs-12">
+                    <label class="form-label">Cost per Day</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      name="cost"
+                      ngModel
+                      #cost="ngModel"
+                      class="form-control"
+                      name="cost"
+                      required
+                    />
+                    <span class="help-block" *ngIf="!cost.valid && cost.touched"
+                      >Please enter password</span
+                    >
+                  </div>
+
+                  <div class="col md-6 xs-12">
+                    <label class="form-label">Model ID</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      name="carid"
+                      [ngModel]="selected_car.id"
+                      class="form-control"
+                      name="carid"
+                      required
+                      readonly
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col md-6 xs-12">
+                    <label class="form-label">Give Image Link</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="image"
+                      ngModel
+                      class="form-control"
+                      name="image"
+                    />
+                  </div>
+                  <div class="col md-6 xs-12">
+                    <label class="form-label">Mileage</label>
+                    <input
+                      type="number"
+                      name="mileage"
+                      ngModel
+                      #mileage="ngModel"
+                      class="form-control"
+                      name="mileage"
+                      required
+                    />
+                    <span
+                      class="help-block"
+                      *ngIf="!mileage.valid && mileage.touched"
+                      >Please enter password</span
+                    >
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col md-6 xs-12">
+                    <label class="form-label">Area Code</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      name="area_code"
+                      ngModel
+                      #area="ngModel"
+                      name="area_code"
+                      required
+                    />
+                    <span class="help-block" *ngIf="!area.valid && area.touched"
+                      >Please enter password</span
+                    >
+                  </div>
+                  <div class="col md-6 xs-12">
+                    <label class="form-label">Capacity</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      name="capacity"
+                      ngModel
+                      #capacity="ngModel"
+                      name="capacity"
+                      required
+                    />
+                    <span
+                      class="help-block"
+                      *ngIf="!capacity.valid && capacity.touched"
+                      >Please enter password</span
+                    >
+                  </div>
+                </div>
+                <!-- <span class="help-block" *ngif="!model.valid && model.touched">
+          Please enter valid Model
+        </span> -->
+                <div style="text-align: center">
+                  <button
+                    class="btn btn-success btn-lg"
+                    type="submit"
+                    [disabled]="!f.valid"
+                    style="width: 200px"
+                  >
+                    Add Car
+                  </button>
+                </div>
+              </form>
+              <div style="text-align: center">
+                <button
+                  class="btn btn-danger btn-lg"
+                  (click)="OnCancel()"
+                  style="width: 200px"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

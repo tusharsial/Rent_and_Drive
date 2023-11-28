@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center">
+      <br />
+      <h3 class="mb-4">LIST OF BOOKINGS</h3>
+    </div>
+    <div
+      class="col"
+      style="margin: 20px"
+      *ngFor="let booking of bookingArray; let i = index"
+    >
+      <div class="card" style="padding: 20px">
+        <br />
+        <div class="row">
+          <div class="col xs-12">
+            <h4>Booking id: {{ booking.id }}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col xs-12">
+            <h4>Cost per day: {{ booking.amount }}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col xs-12">
+            <h2>Start: {{ booking.startDate }}</h2>
+          </div>
+          <div class="col xs-12">
+            <h2>End: {{ booking.endDate }}</h2>
+          </div>
+        </div>
+        <br />
+        <div class="row" *ngIf="isDivVisible[i]">
+          <div class="col xs-12">
+            <div class="card" style="padding: 10px">
+              <div class="row">
+                <img
+                  src="{{ bookingDetailsArray[i].image }}"
+                  class="card-img-top"
+                  style="width: 300px; margin-top: 40px"
+                  alt="Car Image"
+                />
+              </div>
+              <br />
+              <div class="row">
+                <div class="col xs-12">
+                  <h2>Car Selected:</h2>
+                  <h5>
+                    {{ bookingDetailsArray[i].brand }}
+                    {{ bookingDetailsArray[i].model }}
+                  </h5>
+                </div>
+
+                <div class="col xs-12">
+                  <h2>Car Capacity:</h2>
+                  <h5>{{ bookingDetailsArray[i].capacity }} seater</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col xs-12">
+                  <h2>Customer Name:</h2>
+                  <h5>{{ bookingDetailsArray[i].name }}</h5>
+                </div>
+
+                <div class="col xs-12">
+                  <h2>Mobile No:</h2>
+                  <h5>{{ bookingDetailsArray[i].mobile }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button
+            class="btn btn-dark"
+            (click)="onClicked(i)"
+            *ngIf="!isDivVisible[i]"
+          >
+            View Details
+          </button>
+          <button
+            class="btn btn-dark"
+            (click)="onClicked(i)"
+            *ngIf="isDivVisible[i]"
+          >
+            Hide Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

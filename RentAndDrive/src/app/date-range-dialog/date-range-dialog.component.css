@@ -1,0 +1,91 @@
+/* Override the styles for the entire dialog container */
+.mat-mdc-dialog-container {
+  max-width: 80vw;
+  position: static;
+}
+
+/* Override the styles for the dialog surface */
+.mat-mdc-dialog-surface {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Override the styles for the form fields */
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Override the styles for the input elements inside form fields */
+.mat-mdc-input-element {
+  width: 100%;
+}
+.cdk-global-overlay-wrapper{
+  justify-content: center; align-items: center
+}
+/* Override the styles for the datepicker input */
+
+.cdk-overlay-connected-position-bounding-box{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Override the styles for the datepicker toggle button */
+.mat-datepicker-toggle-default-icon {
+  color: #007bff; /* Adjust the color as needed */
+}
+
+/* Override the styles for the buttons in the dialog */
+.btn {
+  margin: 0 10px;
+}
+
+/* Style the apply button differently */
+.btn-success {
+  background-color: #28a745; /* Green color, adjust as needed */
+  color: #fff;
+  border: 1px solid #28a745;
+}
+
+/* Style the cancel button differently */
+.btn-danger {
+  background-color: #dc3545; /* Red color, adjust as needed */
+  color: #fff;
+  border: 1px solid #dc3545;
+}
+
+/* Override the styles for the datepicker calendar */
+.mat-calendar {
+  font-family: 'Arial', sans-serif; /* Adjust the font family as needed */
+}
+
+.mat-calendar-header {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.mat-calendar-period-button,
+.mat-calendar-previous-button,
+.mat-calendar-next-button {
+  color: #fff;
+}
+
+.mat-calendar-body-selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.mat-calendar-body-today {
+  background-color: #f0f0f0;
+}
+
+.mat-calendar-weekdays {
+  background-color: #f2f2f2;
+}
+
+.mat-calendar-cell-header {
+  color: #333;
+}
+
+/* Add more custom styles as needed */
+

@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center">
+      <h2 class="mb-4">CAR MODELS AVAILABLE</h2>
+    </div>
+    <div class="col-xs-12" style="text-align: center">
+      <button class="btn btn-secondary" (click)="onClickBooking()">
+        Click here to view booking list
+      </button>
+    </div>
+    <div class="col" style="margin: 20px" *ngFor="let car of carArray">
+      <div class="card">
+        <img
+          src="assets/images/defaultcar.jpg"
+          class="card-img-top"
+          style="width: 300px; margin-top: 40px; margin-left: 40px"
+          alt="Car Image"
+        />
+        <br />
+        <div class="row">
+          <div class="col xs-12">
+            <h4>Brand: {{ car.brand }}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col xs-12">
+            <h4>Model: {{ car.model }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="isClicked">
+      <div class="card-body p-4 p-lg-5 text-black">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <label class="form-label">Car Brand</label>
+              <input
+                type="text"
+                id="brand"
+                class="form-control"
+                ngModel
+                #brand="ngModel"
+                name="brand"
+                required
+              />
+              <span class="help-block" *ngif="!brand.valid && brand.touched">
+                Please enter valid Brand</span
+              >
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <label class="form-label">Car Model</label>
+              <input
+                type="text"
+                name="model"
+                ngModel
+                #model="ngModel"
+                class="form-control"
+                name="model"
+                required
+              />
+              <span class="help-block" *ngif="!model.valid && model.touched">
+                Please enter valid Model
+              </span>
+            </div>
+
+            <br />
+            <br />
+            <div class="pt-1 mb-4" style="margin-top: 10px">
+              <button
+                class="btn btn-success btn-lg"
+                type="submit"
+                [disabled]="!f.valid"
+              >
+                Add Car
+              </button>
+
+              <button
+                style="margin-left: 5px"
+                class="btn btn-danger btn-lg"
+                (click)="onAddCar()"
+                *ngIf="isClicked"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="pt-1 mb-4" style="margin-left: 20px">
+    <button class="btn btn-dark btn-lg" (click)="onAddCar()" *ngIf="!isClicked">
+      Add New Car Model
+    </button>
+  </div>
+</div>
+
+]
