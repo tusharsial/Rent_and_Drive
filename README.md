@@ -1,12 +1,38 @@
 # Rent_and_Drive
-The Notary service architecture is composed of distinct components that work collaboratively to manage and verify metadata for trusted collections. Notary clients, acting as users or applications, interact with Notary services through both pull and, in certain instances, push operations. Pull operations involve retrieving metadata from one or more remote Notary services, ensuring clients stay updated with the latest information. Some Notary clients also possess the capability to push metadata, contributing to the collective knowledge within the system.
+Token Authentication:
 
-The core components of a Notary service include the Notary Server and Notary Signer. The Notary Server plays a central role in storing and updating signed TUF metadata files for multiple trusted collections in a dedicated database. It is responsible for ensuring the validity, proper signatures, and internal consistency of any uploaded metadata. Additionally, the Notary Server generates timestamp metadata, indicating when the metadata was last updated, and sometimes snapshot metadata. Furthermore, it stores and serves the latest valid metadata to clients, facilitating their access to trustworthy information.
+Notary server optionally supports client authentication using JWT tokens.
+An authorization server manages access controls and provides a cert bundle with the public key for token signing.
+Token Authentication Process:
 
-On the other hand, the Notary Signer is tasked with securely storing private signing keys in a separate database from the Notary Server. These private keys, crucial for signing metadata, are wrapped and encrypted using the JavaScript Object Signing and Encryption (JOSE) standard. The Notary Signer performs signing operations whenever the Notary Server requests, ensuring a secure and controlled process.
+Clients without a token are redirected to the authorization server.
+Clients log in to the authorization server via basic auth over HTTPS.
+Clients obtain a bearer token for subsequent requests to the Notary server.
+Metadata Upload by Client:
 
-The metadata generation process involves clients generating and signing Root, Targets, and sometimes Snapshot metadata. Subsequently, clients upload the signed metadata to the Notary Server, initiating the process of validation, signing, and storage.
+Clients upload new metadata files to the Notary server.
+Metadata Validation by Notary Server:
 
-Security measures are integral to the Notary service architecture. Private signing keys are securely stored in a separate database, and their protection is enhanced through wrapping and encryption using the JOSE standard. This separation of databases adds an additional layer of security to the system.
+Notary server checks uploaded metadata against previous versions for conflicts.
+Signatures, checksums, and metadata validity are verified.
+Timestamp and Snapshot Metadata Generation:
 
-The workflow of the Notary service is orchestrated through collaboration between clients, servers, and signers. Clients engage in pull and push operations, generating and signing metadata. The Notary Server ensures the validation and storage of this metadata, generating additional timestamp and snapshot metadata when necessary. Simultaneously, the Notary Signer manages the secure storage and signing operations associated with private keys, contributing to the overall security and reliability of the Notary service architecture.
+Upon successful validation, Notary server generates timestamp (and possibly snapshot) metadata.
+Signing Process by Notary Signer:
+
+Notary signer retrieves encrypted private keys from its database.
+Keys are decrypted if available and used to sign the metadata.
+Signatures are sent back to the Notary server.
+Notary Server as Source of Truth:
+
+Notary server is the source of truth for the state of a trusted collection, storing both client-uploaded and server-generated metadata.
+Notification to Client:
+
+Notary server notifies the client of a successful upload.
+Download by Client:
+
+The client can immediately download the latest metadata using the still-valid bearer token.
+Handling Expired Timestamp:
+
+If the timestamp has expired, Notary server initiates a sequence to generate a new timestamp.
+It requests a signature from the Notary signer, stores the signed timestamp in the database, and sends the updated timestamp with the rest of the metadata to the client.
